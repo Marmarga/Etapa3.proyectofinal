@@ -1,21 +1,15 @@
 import express from 'express'
+import controller from '../controllers/productos.controller.js'
+import validator from '../validators/productos.validator.js'
 
 const routerProductos = express.Router()
 
-routerProductos.get('/:id?', (req, res) => {
-    res.send ('GET ALL / ONE (READ)')
-})
+routerProductos.get('/:id?', controller.obtenerProductos)
 
-routerProductos.post('/', (req, res) => {
-    res.send ('POST (CREATE)')
-})
+routerProductos.post('/', validator.productoCreateValidator,controller.guardarProducto )
 
-routerProductos.put('/:id', (req, res) => {
-    res.send ('PUT (UPDATE)')
-})
+routerProductos.put('/:id', controller.actualizarProducto )
 
-routerProductos.delete('/:id', (req, res) => {
-    res.send ('DELETE (DELETE)')
-})
+routerProductos.delete('/:id', validator.productoDeleteValidator,controller.borrarProducto )
 
 export default routerProductos
