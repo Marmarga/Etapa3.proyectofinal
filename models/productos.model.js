@@ -38,20 +38,17 @@ const guardarProducto = async (productoNuevo) => {
 
     try {const productoAlmacenado = new productosModel(productoNuevo)
     await productoAlmacenado.save()
-
-    return productoAlmacenado
+    return handleMongoId(productoAlmacenado)
         
     } catch (error) {
-        console.log('Error (guardar productos), no se pudo guardar en la DB', error)
-        
-    }
+        console.log('Error (guardar productos), no se pudo guardar en la DB', error)    }
 }
 
 const modificarProducto = async (id, productoAEditar) => {
 
     try {
         const productoModificado = await productosModel.findByIdAndUpdate(id, productoAEditar)
-        return productoModificado 
+        return handleMongoId(productoModificado) 
     } catch (error) {
         console.log('Error[modificarProducto]: No se pudo actualizar el producto', error)
     }
@@ -62,11 +59,9 @@ const eliminarProducto = async (id) => {
 
     try { 
         const productoBorrado = await productosModel.findByIdAndDelete(id)
-        return productoBorrado
-        
+        return handleMongoId(productoBorrado)        
     } catch (error) {
         console.log('Error al eliminar el producto en la DB', error)
-        
     }
 
 }
