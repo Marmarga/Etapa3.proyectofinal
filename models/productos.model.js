@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import handleMongoId from "../utils/handleMongoId.js";
+
 
 const productosSchema = mongoose.Schema({
     nombre: String,
@@ -16,7 +18,7 @@ const productosModel = mongoose.model('productos', productosSchema)
 const leerProducto = async (id) => {
     try {
         const producto = await productosModel.findById(id)
-        return producto
+        return handleMongoId (producto)
     } catch (error) {
         console.log('[leerProducto]: No se pudo leer el producto con el id', error)
     }
@@ -25,7 +27,7 @@ const leerProducto = async (id) => {
 const leerProductos = async () => {
     try {
         const productos = await productosModel.find({})
-        return productos
+        return handleMongoId (productos)
     } catch (error) {
             console.log('[leerProductos]: Algo no salio bien')        
     }
