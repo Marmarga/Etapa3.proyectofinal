@@ -47,7 +47,7 @@ const guardarProducto = async (productoNuevo) => {
 const modificarProducto = async (id, productoAEditar) => {
 
     try {
-        const productoModificado = await productosModel.findByIdAndUpdate(id, productoAEditar)
+        const productoModificado = await productosModel.findByIdAndUpdate(id, productoAEditar, {new: true})
         return handleMongoId(productoModificado) 
     } catch (error) {
         console.log('Error[modificarProducto]: No se pudo actualizar el producto', error)
