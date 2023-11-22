@@ -8,7 +8,7 @@ routerProductos.get('/:id?', controller.obtenerProductos)
 
 routerProductos.post('/', validator.productoCreateValidator,controller.guardarProducto )
 
-routerProductos.put('/:id', controller.actualizarProducto )
+routerProductos.put('/:id', validator.productoUpdapeValidator, controller.actualizarProducto )
 
 routerProductos.delete('/:id', validator.productoDeleteValidator,controller.borrarProducto )
 

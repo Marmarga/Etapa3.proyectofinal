@@ -17,10 +17,26 @@ const productoCreateValidator = [
     productoMiddleware
 ]
 
+const prodcutoReadOneValidator = [
+    check('nombre')
+    .notEmpty()
+    .withMessage('El producto agregado')
+    .trim(),
+    productoMiddleware
+]
+
+const productoUpdapeValidator =[
+    check('id')
+    .notEmpty()
+    .withMessage('El producto ')
+    .trim(),
+    productoMiddleware
+]
+
 export default {
     productoDeleteValidator,
-    productoCreateValidator
+    productoCreateValidator,
+    productoUpdapeValidator,
+    prodcutoReadOneValidator
 }
 
-//hacer el productoUpdapeValidator
-//hacer el prodcutoReadOneValidator

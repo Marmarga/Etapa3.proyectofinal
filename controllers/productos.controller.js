@@ -28,13 +28,8 @@ const guardarProducto = async (req, res) => {
         
     } catch (error) {
         console.log ('ERORR al guardar el producto', error)
-        handleError(res, `[guardarProducto] ${error.message} - Error al guardar un producto`)
-        
-        
+        handleError(res, `[guardarProducto] ${error.message} - Error al guardar un producto`)        
     }
-
-    
-
 }
 
 const actualizarProducto = async (req, res) => {
